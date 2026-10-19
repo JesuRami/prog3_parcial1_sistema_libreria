@@ -127,7 +127,7 @@ Son contrato; romperlas es un defecto. **Fuente completa con citas verbatim**: [
 20. **NUNCA persistir en otro medio que no sea `localStorage` ni duplicar los ejemplos iniciales al reabrir** → en el primer inicio se cargan los ejemplos; al volver a abrir se recuperan los registros guardados sin duplicar datos. *(Consigna, `Ejercicio 6` — CHANGES.md regla 20)*
 21. **NUNCA entregar un README sin su contenido mínimo** → identificar a los autores; pasos para abrir en el navegador sin npm; navegación entre vistas; funcionalidades implementadas y pendientes; ubicación de los datos iniciales; funcionamiento y límites de `localStorage`; resultados de los casos manuales; procedencia de imágenes ajenas, si existen. *(Consigna, `Formato de entrega` — CHANGES.md regla 21)*
 22. **NUNCA dar un caso por aprobado sin ejecutarlo** → verificar manualmente y registrar el comportamiento real (falla o funcionalidad pendiente incluida). *(Consigna, `Ejercicio 6`: «No se indica una prueba como aprobada sin ejecutarla.» — CHANGES.md regla 22)*
-23. **NUNCA versionar la carpeta `openspec/`** → el `.gitignore` de la raíz la excluye: es scaffolding interno de OpenSpec y tampoco forma parte de la carpeta de entrega. *(Decisión del usuario — política de repositorio; extiende la fila de scaffolding de CHANGES.md § Reglas duras)*
+23. **NUNCA excluir la carpeta `openspec/` de git** → `.gitignore` NO la ignora: la carpeta siempre se versiona y se publica en el repositorio, junto con el resto del proyecto. *(Decisión del usuario — política de repositorio; corrige la versión anterior de esta regla, que la excluía)*
 
 ---
 
