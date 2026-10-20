@@ -31,6 +31,223 @@
   </header>
 
   <main id="contenido" class="principal">
+    <p class="mensaje mensaje--info" id="aviso-maqueta">Maqueta (etapa 1): los datos que se ven en las pantallas son ejemplos estáticos del conjunto inicial. JavaScript los va a reemplazar con los datos locales.</p>
+
+    <section id="catalogo" class="vista" aria-labelledby="t-catalogo">
+      <h1 id="t-catalogo">Librería Lomo: catálogo</h1>
+      <form id="form-busqueda" class="formulario tarjeta" role="search" novalidate>
+        <div class="campo">
+          <label for="busqueda-titulo">Buscar por título</label>
+          <input type="search" id="busqueda-titulo" name="busqueda" autocomplete="off" aria-describedby="busqueda-ayuda">
+          <p id="busqueda-ayuda" class="ayuda">No distingue mayúsculas de minúsculas. Dejalo vacío para ver todo el catálogo.</p>
+        </div>
+        <div class="acciones">
+          <button type="submit" class="boton">Buscar libros</button>
+          <button type="reset" class="boton boton--secundario">Limpiar búsqueda</button>
+        </div>
+      </form>
+
+      <h2>Libros del catálogo</h2>
+      <p id="catalogo-contador" class="ayuda" role="status">Mostrando 6 libros.</p>
+      <p id="msg-catalogo-vacio" class="mensaje mensaje--info" role="status" hidden>No hay libros registrados todavía.</p>
+      <p id="msg-catalogo-sin-resultados" class="mensaje mensaje--info" role="status" hidden>No se encontraron libros que coincidan con la búsqueda.</p>
+      <ul id="lista-catalogo" class="grilla">
+          <li>
+            <article class="tarjeta tarjeta-libro">
+              <h3>El Jardín de las Máquinas</h3>
+              <dl class="datos">
+                <dt>ISBN</dt><dd>978-950-0001-1</dd>
+                <dt>Editorial</dt><dd>Editorial Astral</dd>
+                <dt>Género</dt><dd>Ciencia ficción</dd>
+                <dt>Autores</dt><dd>Valeria Ortiz</dd>
+                <dt>Precio</dt><dd class="precio">$ 1500.00</dd>
+              </dl>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta tarjeta-libro">
+              <h3>Cartografías del Silencio</h3>
+              <dl class="datos">
+                <dt>ISBN</dt><dd>978-950-0002-2</dd>
+                <dt>Editorial</dt><dd>Editorial Norte</dd>
+                <dt>Género</dt><dd>Ensayo</dd>
+                <dt>Autores</dt><dd>Nicolás Ferrari</dd>
+                <dt>Precio</dt><dd class="precio">$ 2000.00</dd>
+              </dl>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta tarjeta-libro">
+              <h3>Manual de Senderos</h3>
+              <dl class="datos">
+                <dt>ISBN</dt><dd>978-950-0003-3</dd>
+                <dt>Editorial</dt><dd>Editorial Astral</dd>
+                <dt>Género</dt><dd>Sin clasificar</dd>
+                <dt>Autores</dt><dd>Camila Sosa</dd>
+                <dt>Precio</dt><dd class="precio">$ 1800.00</dd>
+              </dl>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta tarjeta-libro">
+              <h3>El Peso del Agua</h3>
+              <dl class="datos">
+                <dt>ISBN</dt><dd>978-950-0004-4</dd>
+                <dt>Editorial</dt><dd>Editorial Norte</dd>
+                <dt>Género</dt><dd>Ciencia ficción</dd>
+                <dt>Autores</dt><dd>Valeria Ortiz, Nicolás Ferrari</dd>
+                <dt>Precio</dt><dd class="precio">$ 2500.00</dd>
+              </dl>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta tarjeta-libro">
+              <h3>Diarios de un Viajero</h3>
+              <dl class="datos">
+                <dt>ISBN</dt><dd>978-950-0005-5</dd>
+                <dt>Editorial</dt><dd>Editorial Astral</dd>
+                <dt>Género</dt><dd>Ensayo</dd>
+                <dt>Autores</dt><dd>Camila Sosa</dd>
+                <dt>Precio</dt><dd class="precio">$ 1200.00</dd>
+              </dl>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta tarjeta-libro">
+              <h3>Códigos y Sombras</h3>
+              <dl class="datos">
+                <dt>ISBN</dt><dd>978-950-0006-6</dd>
+                <dt>Editorial</dt><dd>Editorial Norte</dd>
+                <dt>Género</dt><dd>Sin clasificar</dd>
+                <dt>Autores</dt><dd>Nicolás Ferrari, Camila Sosa</dd>
+                <dt>Precio</dt><dd class="precio">$ 3000.00</dd>
+              </dl>
+            </article>
+          </li>
+      </ul>
+    </section>
+
+    <section id="libros" class="vista" aria-labelledby="t-libros">
+      <h1 id="t-libros">Libros</h1>
+      <div class="dividido">
+        <form id="form-libro" class="formulario tarjeta" novalidate>
+          <h2>Registrar libro</h2>
+        <div class="campo">
+          <label for="libro-titulo">Título</label>
+          <input type="text" id="libro-titulo" name="titulo" required aria-describedby="error-libro-titulo">
+          
+          <p id="error-libro-titulo" class="error-campo"></p>
+        </div>
+        <div class="campo">
+          <label for="libro-isbn">ISBN</label>
+          <input type="text" id="libro-isbn" name="isbn" required aria-describedby="libro-isbn-ayuda error-libro-isbn">
+          <p id="libro-isbn-ayuda" class="ayuda">Se compara sin espacios ni guiones.</p>
+          <p id="error-libro-isbn" class="error-campo"></p>
+        </div>
+        <div class="campo">
+          <label for="libro-precio">Precio</label>
+          <input type="text" id="libro-precio" name="precio" required inputmode="decimal" aria-describedby="libro-precio-ayuda error-libro-precio">
+          <p id="libro-precio-ayuda" class="ayuda">Número mayor que cero. Ejemplo: 1500.50</p>
+          <p id="error-libro-precio" class="error-campo"></p>
+        </div>
+        <div class="campo">
+          <label for="libro-editorial">Editorial</label>
+          <select id="libro-editorial" name="editorial" required aria-describedby="error-libro-editorial">
+            <option value="">Elegí una editorial</option>
+              <option value="1">Editorial Astral</option>
+              <option value="2">Editorial Norte</option>
+          </select>
+          <p id="error-libro-editorial" class="error-campo"></p>
+        </div>
+        <div class="campo">
+          <label for="libro-genero">Género</label>
+          <select id="libro-genero" name="genero" aria-describedby="error-libro-genero">
+            <option value="">Sin clasificar</option>
+            <option value="1">Ciencia ficción</option>
+            <option value="2">Ensayo</option>
+          </select>
+          <p id="error-libro-genero" class="error-campo"></p>
+        </div>
+        <fieldset id="libro-autores" class="grupo" aria-describedby="libro-autores-ayuda error-libro-autores">
+          <legend>Autores</legend>
+          <p id="libro-autores-ayuda" class="ayuda">Elegí al menos un autor.</p>
+          <ul class="lista-check">
+                <li><label class="check"><input type="checkbox" name="autores" value="1"> Valeria Ortiz</label></li>
+                <li><label class="check"><input type="checkbox" name="autores" value="2"> Nicolás Ferrari</label></li>
+                <li><label class="check"><input type="checkbox" name="autores" value="3"> Camila Sosa</label></li>
+          </ul>
+          <p id="error-libro-autores" class="error-campo"></p>
+        </fieldset>
+
+          <ul id="errores-libro" class="errores" role="alert" hidden></ul>
+          <p id="resultado-libro" class="mensaje" role="status" aria-live="polite" hidden></p>
+          <div class="acciones">
+            <button type="submit" class="boton">Guardar libro</button>
+            <button type="reset" class="boton boton--secundario">Limpiar formulario</button>
+          </div>
+        </form>
+
+        <section aria-labelledby="t-lista-libros">
+          <h2 id="t-lista-libros">Libros registrados</h2>
+          <p id="msg-libros-vacio" class="mensaje mensaje--info" role="status" hidden>No hay libros registrados todavía.</p>
+          <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-lista-libros">
+            <table class="tabla">
+              <thead><tr><th scope="col">Título</th><th scope="col">ISBN</th><th scope="col">Editorial</th><th scope="col">Género</th><th scope="col">Autores</th><th scope="col" class="num">Precio</th></tr></thead>
+              <tbody id="tabla-libros">
+            <tr><td>El Jardín de las Máquinas</td><td>978-950-0001-1</td><td>Editorial Astral</td><td>Ciencia ficción</td><td>Valeria Ortiz</td><td class="num">$ 1500.00</td></tr>
+            <tr><td>Cartografías del Silencio</td><td>978-950-0002-2</td><td>Editorial Norte</td><td>Ensayo</td><td>Nicolás Ferrari</td><td class="num">$ 2000.00</td></tr>
+            <tr><td>Manual de Senderos</td><td>978-950-0003-3</td><td>Editorial Astral</td><td>Sin clasificar</td><td>Camila Sosa</td><td class="num">$ 1800.00</td></tr>
+            <tr><td>El Peso del Agua</td><td>978-950-0004-4</td><td>Editorial Norte</td><td>Ciencia ficción</td><td>Valeria Ortiz, Nicolás Ferrari</td><td class="num">$ 2500.00</td></tr>
+            <tr><td>Diarios de un Viajero</td><td>978-950-0005-5</td><td>Editorial Astral</td><td>Ensayo</td><td>Camila Sosa</td><td class="num">$ 1200.00</td></tr>
+            <tr><td>Códigos y Sombras</td><td>978-950-0006-6</td><td>Editorial Norte</td><td>Sin clasificar</td><td>Nicolás Ferrari, Camila Sosa</td><td class="num">$ 3000.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="clientes" class="vista" aria-labelledby="t-clientes">
+      <h1 id="t-clientes">Clientes</h1>
+      <div class="dividido">
+        <form id="form-cliente" class="formulario tarjeta" novalidate>
+          <h2>Registrar cliente</h2>
+        <div class="campo">
+          <label for="cliente-nombre">Nombre completo</label>
+          <input type="text" id="cliente-nombre" name="nombre" autocomplete="name" required aria-describedby="error-cliente-nombre">
+          
+          <p id="error-cliente-nombre" class="error-campo"></p>
+        </div>
+        <div class="campo">
+          <label for="cliente-email">Email</label>
+          <input type="email" id="cliente-email" name="email" autocomplete="email" required aria-describedby="error-cliente-email">
+          
+          <p id="error-cliente-email" class="error-campo"></p>
+        </div>
+          <ul id="errores-cliente" class="errores" role="alert" hidden></ul>
+          <p id="resultado-cliente" class="mensaje" role="status" aria-live="polite" hidden></p>
+          <div class="acciones">
+            <button type="submit" class="boton">Guardar cliente</button>
+            <button type="reset" class="boton boton--secundario">Limpiar formulario</button>
+          </div>
+        </form>
+
+        <section aria-labelledby="t-lista-clientes">
+          <h2 id="t-lista-clientes">Clientes registrados</h2>
+          <p id="msg-clientes-vacio" class="mensaje mensaje--info" role="status" hidden>No hay clientes registrados todavía.</p>
+          <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-lista-clientes">
+            <table class="tabla">
+              <thead><tr><th scope="col">Nombre completo</th><th scope="col">Email</th></tr></thead>
+              <tbody id="tabla-clientes">
+            <tr><td>María Gómez</td><td>maria.gomez@ejemplo.com</td></tr>
+            <tr><td>Juan Pérez</td><td>juan.perez@ejemplo.com</td></tr>
+            <tr><td>Lucía Ramírez</td><td>lucia.ramirez@ejemplo.com</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
   </main>
 
   <footer class="pie">
