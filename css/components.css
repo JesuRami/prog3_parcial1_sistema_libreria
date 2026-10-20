@@ -1,0 +1,174 @@
+/* Librería Lomo · components.css
+   Tarjetas, formularios, botones, mensajes y tablas con scroll propio. */
+
+/* ---------- Tarjetas ---------- */
+.tarjeta {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: var(--esp-2);
+  margin-bottom: var(--esp-3);
+}
+
+/* El "lomo" de los libros */
+.tarjeta-libro {
+  border-left: 10px solid var(--lomo);
+  margin-bottom: 0;
+}
+
+.grilla {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: var(--esp-2);
+}
+
+.datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem var(--esp-2);
+  margin: 0;
+}
+.datos dt { font-weight: 700; color: var(--gris); }
+.datos dd { margin: 0; }
+.precio { font-weight: 700; }
+
+/* ---------- Formularios ---------- */
+.formulario { display: flex; flex-direction: column; gap: var(--esp-2); }
+.formulario--linea { margin-bottom: var(--esp-3); }
+
+.campo { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+
+label, legend { font-weight: 700; }
+
+input, select, textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--tinta);
+  background: var(--blanco);
+  padding: 0.6rem 0.7rem;
+  min-height: 44px;
+  border: 1px solid #6b7a8a;
+  border-radius: var(--radio);
+}
+select[multiple] { min-height: 7rem; }
+
+.grupo {
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: var(--esp-2);
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+.grupo legend { padding: 0 var(--esp-1); }
+
+.ayuda { color: var(--gris); font-size: 0.9rem; margin: 0; }
+
+/* ---------- Botones ---------- */
+.boton {
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0.6rem 1.2rem;
+  color: var(--blanco);
+  background: var(--lomo);
+  border: 2px solid var(--lomo);
+  border-radius: var(--radio);
+  cursor: pointer;
+  align-self: flex-start;
+}
+.boton:hover { background: var(--lomo-oscuro); border-color: var(--lomo-oscuro); }
+
+.boton--secundario {
+  color: var(--lomo-oscuro);
+  background: var(--blanco);
+}
+.boton--secundario:hover { color: var(--blanco); }
+.boton--chico { min-height: 36px; padding: 0.3rem 0.8rem; font-size: 0.9rem; }
+
+/* ---------- Mensajes (siempre con texto, no solo color) ---------- */
+.mensaje {
+  padding: 0.7rem var(--esp-2);
+  border-left: 6px solid var(--ok);
+  background: var(--ok-fondo);
+  color: var(--ok);
+  border-radius: var(--radio);
+}
+.mensaje--info {
+  border-left-color: var(--tinta);
+  background: var(--info-fondo);
+  color: var(--tinta);
+}
+.mensaje--error {
+  border-left-color: var(--error);
+  background: var(--error-fondo);
+  color: var(--error);
+}
+
+.errores {
+  margin: 0;
+  padding: 0.7rem var(--esp-2) 0.7rem 2rem;
+  border-left: 6px solid var(--error);
+  background: var(--error-fondo);
+  color: var(--error);
+  border-radius: var(--radio);
+}
+
+/* ---------- Tablas (con scroll propio) ---------- */
+.tabla-envoltura {
+  position: relative; /* contiene los textos solo-lectores dentro del scroll de la tabla */
+  overflow-x: auto;
+  max-width: 100%;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  margin-bottom: var(--esp-3);
+}
+
+.tabla {
+  width: 100%;
+  min-width: 30rem;
+  border-collapse: collapse;
+}
+.tabla th, .tabla td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid var(--borde);
+}
+.tabla thead th {
+  background: var(--tinta);
+  color: var(--blanco);
+}
+.tabla tbody tr:nth-child(even) { background: var(--papel); }
+.tabla .num { text-align: right; white-space: nowrap; }
+.tabla tfoot th, .tabla .total { font-weight: 700; }
+
+
+/* ---------- Errores por campo (texto, no solo color) ---------- */
+.error-campo {
+  margin: 0;
+  color: var(--error);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.error-campo:empty { display: none; }
+[aria-invalid="true"] { border-color: var(--error); border-style: dashed; }
+
+/* Íconos de texto: refuerzan el estado sin depender del color */
+.mensaje::before { content: "✔ "; }
+.mensaje--info::before { content: "ℹ "; }
+.mensaje--error::before { content: "✖ "; }
+
+/* ---------- Autores como casillas ---------- */
+.lista-check { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); }
+.check { display: flex; align-items: center; gap: var(--esp-1); font-weight: 400; min-height: 44px; }
+.check input { width: 1.25rem; min-height: 0; height: 1.25rem; flex: none; }
+
+/* ---------- Venta ---------- */
+.cantidad { width: 5rem; text-align: right; }
+.resumen { border-top: 1px solid var(--borde); padding-top: var(--esp-2); }

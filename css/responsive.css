@@ -1,0 +1,18 @@
+/* Librería Lomo · responsive.css
+   Adaptación: la base está pensada para 320 px; desde 768 px y 1024 px se amplía hasta 1280 px. */
+
+@media (min-width: 48rem) {
+  h1 { font-size: 2.1rem; }
+  .encabezado { padding: var(--esp-2) var(--esp-4); }
+  .principal { padding: var(--esp-4) var(--esp-3); }
+  .formulario.tarjeta { padding: var(--esp-3); }
+}
+
+@media (min-width: 64rem) {
+  .dividido { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); }
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
