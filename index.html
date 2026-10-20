@@ -248,6 +248,105 @@
         </section>
       </div>
     </section>
+
+    <section id="ventas" class="vista" aria-labelledby="t-ventas">
+      <h1 id="t-ventas">Ventas</h1>
+      <form id="form-venta" class="formulario tarjeta" novalidate>
+        <h2>Nueva venta</h2>
+        <div class="campo">
+          <label for="venta-cliente">Cliente</label>
+          <select id="venta-cliente" name="cliente" required aria-describedby="error-venta-cliente">
+            <option value="">Elegí un cliente</option>
+              <option value="1">María Gómez</option>
+              <option value="2">Juan Pérez</option>
+              <option value="3">Lucía Ramírez</option>
+          </select>
+          <p id="error-venta-cliente" class="error-campo"></p>
+        </div>
+
+        <fieldset class="grupo">
+          <legend>Agregar renglón</legend>
+          <div class="campo">
+            <label for="venta-libro">Libro</label>
+            <select id="venta-libro" name="libro" aria-describedby="error-venta-libro">
+              <option value="">Elegí un libro</option>
+              <option value="1">El Jardín de las Máquinas</option>
+              <option value="2">Cartografías del Silencio</option>
+              <option value="3">Manual de Senderos</option>
+              <option value="4">El Peso del Agua</option>
+              <option value="5">Diarios de un Viajero</option>
+              <option value="6">Códigos y Sombras</option>
+            </select>
+            <p id="error-venta-libro" class="error-campo"></p>
+          </div>
+          <div class="campo">
+            <label for="venta-cantidad">Cantidad</label>
+            <input type="number" id="venta-cantidad" name="cantidad" min="1" step="1" value="1" inputmode="numeric" aria-describedby="error-venta-cantidad">
+            <p id="error-venta-cantidad" class="error-campo"></p>
+          </div>
+          <button type="button" id="btn-agregar-renglon" class="boton boton--secundario">Agregar renglón</button>
+        </fieldset>
+
+        <ul id="errores-venta" class="errores" role="alert" hidden></ul>
+
+        <h3 id="t-renglones">Renglones de la venta</h3>
+        <p id="msg-renglones-vacio" class="mensaje mensaje--info" role="status" hidden>Todavía no agregaste renglones.</p>
+        <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-renglones">
+          <table class="tabla">
+            <thead><tr><th scope="col">Libro</th><th scope="col" class="num">Cantidad</th><th scope="col" class="num">Precio unitario</th><th scope="col" class="num">Subtotal</th><th scope="col">Acciones</th></tr></thead>
+            <tbody id="tabla-renglones">
+              <tr><td>El Jardín de las Máquinas</td><td class="num"><label class="solo-lectores" for="cantidad-renglon-1">Cantidad de El Jardín de las Máquinas</label><input class="cantidad" type="number" id="cantidad-renglon-1" min="1" step="1" value="2"></td><td class="num">$ 1500.00</td><td class="num">$ 3000.00</td><td><button type="button" class="boton boton--secundario boton--chico">Quitar<span class="solo-lectores"> El Jardín de las Máquinas</span></button></td></tr>
+              <tr><td>Cartografías del Silencio</td><td class="num"><label class="solo-lectores" for="cantidad-renglon-2">Cantidad de Cartografías del Silencio</label><input class="cantidad" type="number" id="cantidad-renglon-2" min="1" step="1" value="1"></td><td class="num">$ 2000.00</td><td class="num">$ 2000.00</td><td><button type="button" class="boton boton--secundario boton--chico">Quitar<span class="solo-lectores"> Cartografías del Silencio</span></button></td></tr>
+            </tbody>
+            <tfoot><tr><th scope="row" colspan="3">Total</th><td id="venta-total" class="num total">$ 5000.00</td><td></td></tr></tfoot>
+          </table>
+        </div>
+
+        <section class="resumen" aria-labelledby="t-resumen">
+          <h3 id="t-resumen">Resumen de la venta</h3>
+          <dl class="datos">
+            <dt>Cliente</dt><dd id="resumen-cliente">María Gómez</dd>
+            <dt>Renglones</dt><dd id="resumen-renglones">2</dd>
+            <dt>Total</dt><dd id="resumen-total" class="precio">$ 5000.00</dd>
+          </dl>
+        </section>
+
+        <p id="resultado-venta" class="mensaje" role="status" aria-live="polite" hidden></p>
+        <div class="acciones">
+          <button type="submit" class="boton">Confirmar venta</button>
+          <button type="reset" class="boton boton--secundario">Vaciar venta</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="historial" class="vista" aria-labelledby="t-historial">
+      <h1 id="t-historial">Historial de ventas</h1>
+      <p id="msg-historial-vacio" class="mensaje mensaje--info" role="status" hidden>Todavía no se confirmó ninguna venta.</p>
+      <div class="tabla-envoltura" tabindex="0" role="region" aria-label="Ventas confirmadas">
+        <table class="tabla">
+          <thead><tr><th scope="col">Identificador</th><th scope="col">Fecha</th><th scope="col">Cliente</th><th scope="col" class="num">Total</th><th scope="col">Detalle</th></tr></thead>
+          <tbody id="tabla-historial">
+            <tr><td>V-0001</td><td>19/10/2026 11:30</td><td>María Gómez</td><td class="num">$ 5000.00</td><td><button type="button" class="boton boton--secundario boton--chico">Ver detalle<span class="solo-lectores"> de la venta V-0001</span></button></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <section id="detalle-venta" class="tarjeta" aria-labelledby="t-detalle">
+        <h2 id="t-detalle">Detalle de la venta V-0001</h2>
+        <p id="msg-detalle-vacio" class="mensaje mensaje--info" role="status" hidden>Elegí una venta del listado para ver sus renglones.</p>
+        <p id="detalle-resumen">Cliente: María Gómez · Fecha: 19/10/2026 11:30</p>
+        <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-detalle">
+          <table class="tabla">
+            <thead><tr><th scope="col">Libro</th><th scope="col" class="num">Cantidad</th><th scope="col" class="num">Precio unitario</th><th scope="col" class="num">Subtotal</th></tr></thead>
+            <tbody id="tabla-detalle">
+              <tr><td>El Jardín de las Máquinas</td><td class="num">2</td><td class="num">$ 1500.00</td><td class="num">$ 3000.00</td></tr>
+              <tr><td>Cartografías del Silencio</td><td class="num">1</td><td class="num">$ 2000.00</td><td class="num">$ 2000.00</td></tr>
+            </tbody>
+            <tfoot><tr><th scope="row" colspan="3">Total</th><td class="num total">$ 5000.00</td></tr></tfoot>
+          </table>
+        </div>
+      </section>
+    </section>
   </main>
 
   <footer class="pie">
