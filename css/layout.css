@@ -1,0 +1,100 @@
+/* Librería Lomo · layout.css
+   Encabezado, navegación, contenido principal, vistas y pie. */
+
+/* ---------- Encabezado y navegación ---------- */
+.encabezado {
+  background: var(--tinta);
+  color: var(--blanco);
+  padding: var(--esp-2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-2);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  color: var(--blanco);
+  text-decoration: none;
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.marca:hover { text-decoration: underline; }
+.marca img { width: 2.5rem; height: 2.5rem; flex: none; }
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-1);
+}
+
+.menu a {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  min-height: 44px;
+  line-height: 28px;
+  color: var(--blanco);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radio);
+}
+.menu a:hover { border-color: var(--blanco); }
+/* Vista activa (según la ancla de la URL). Si no hay ancla, el catálogo. */
+body:not(:has(.vista:target)) .menu a[href="#catalogo"],
+body:has(#catalogo:target) .menu a[href="#catalogo"],
+body:has(#libros:target) .menu a[href="#libros"],
+body:has(#clientes:target) .menu a[href="#clientes"],
+body:has(#ventas:target) .menu a[href="#ventas"],
+body:has(#historial:target) .menu a[href="#historial"] {
+  background: var(--blanco);
+  color: var(--tinta);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.menu a:focus-visible { outline-color: #ffd166; }
+
+/* ---------- Contenido principal y vistas ---------- */
+.principal {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--esp-3) var(--esp-2);
+}
+
+/* Navegación por anclas (#catalogo, #libros...): solo se ve la vista indicada
+   en la URL. Si no hay ninguna, se muestra el catálogo. */
+.vista { display: none; }
+.vista:target { display: block; }
+.principal:not(:has(.vista:target)) #catalogo { display: block; }
+
+/* ---------- Pie ---------- */
+.pie {
+  text-align: center;
+  color: var(--gris);
+  padding: var(--esp-3) var(--esp-2);
+  border-top: 1px solid var(--borde);
+}
+
+
+/* Formulario junto al listado (pantallas anchas, ver responsive.css) */
+.dividido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-3);
+  align-items: start;
+}
+
+/* Barra de acciones: botones en fila */
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+  align-items: center;
+}

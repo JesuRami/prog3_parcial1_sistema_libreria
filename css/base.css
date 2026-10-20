@@ -1,0 +1,81 @@
+/* Librería Lomo · base.css
+   Variables (tokens), reset, tipografía, foco visible y utilidades de accesibilidad. */
+
+:root {
+  --tinta: #14213d;        /* texto y encabezado */
+  --lomo: #1f6f5c;         /* acento principal (verde biblioteca) */
+  --lomo-oscuro: #17564a;
+  --papel: #f2f5f7;        /* fondo de página */
+  --blanco: #ffffff;
+  --borde: #c9d3dc;
+  --gris: #4a5568;         /* texto secundario */
+  --error: #9b1c1c;
+  --error-fondo: #fdecec;
+  --ok: #14532d;
+  --ok-fondo: #e6f4ea;
+  --info-fondo: #e8eef5;
+
+  --fuente-titulos: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --fuente-texto: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --esp-1: 0.5rem;
+  --esp-2: 1rem;
+  --esp-3: 1.5rem;
+  --esp-4: 2.5rem;
+  --radio: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--tinta);
+  background: var(--papel);
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.2;
+  margin: 0 0 var(--esp-2);
+}
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.1rem; margin-top: var(--esp-3); }
+
+p { margin: 0 0 var(--esp-2); }
+
+/* ---------- Accesibilidad ---------- */
+:focus-visible {
+  outline: 3px solid #f2a900;
+  outline-offset: 2px;
+}
+
+.salto {
+  position: absolute;
+  left: var(--esp-1);
+  top: -4rem;
+  background: var(--blanco);
+  color: var(--tinta);
+  padding: var(--esp-1) var(--esp-2);
+  border-radius: var(--radio);
+  z-index: 10;
+}
+.salto:focus { top: var(--esp-1); }
+
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
