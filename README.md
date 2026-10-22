@@ -3,7 +3,7 @@
 Aplicación de gestión de una librería hecha **únicamente con HTML, CSS y JavaScript nativos**,
 sin librerías, frameworks, CDNs, compilación ni backend. Los datos viven en el navegador.
 
-**Autores:**  
+**Autores y legajos:**  
 Lautaro Fernández, .  
 Daniela Díaz, .  
 Jesús Ramírez, 54010.  
