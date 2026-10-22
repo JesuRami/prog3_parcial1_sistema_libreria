@@ -77,9 +77,9 @@
         </div>
         <div class="campo">
           <label for="libro-editorial">Editorial</label>
-          <select id="libro-editorial" name="editorial" required aria-describedby="error-libro-editorial">
-            <option value="">Elegí una editorial</option>
-          </select>
+          <input type="text" id="libro-editorial" name="editorial" required list="opciones-editoriales" autocomplete="off" aria-describedby="libro-editorial-ayuda error-libro-editorial">
+          <datalist id="opciones-editoriales"></datalist>
+          <p id="libro-editorial-ayuda" class="ayuda">Escribí el nombre o elegilo de la lista; si es nueva, se agrega al conjunto local al guardar.</p>
           <p id="error-libro-editorial" class="error-campo"></p>
         </div>
         <div class="campo">
@@ -90,10 +90,20 @@
           <p id="error-libro-genero" class="error-campo"></p>
         </div>
         <fieldset id="libro-autores" class="grupo" aria-describedby="libro-autores-ayuda error-libro-autores">
-          <legend>Autores</legend>
-          <p id="libro-autores-ayuda" class="ayuda">Elegí al menos un autor.</p>
-          <ul class="lista-check">
+          <legend>Autor, es</legend>
+          <p id="libro-autores-ayuda" class="ayuda">Marcá uno o más autores de la lista, o agregá uno nuevo.</p>
+          <ul class="lista-check lista-scroll">
           </ul>
+          <div class="campo">
+            <label for="autor-nuevo">Agregar autor nuevo</label>
+            <div class="control-con-accion">
+              <input type="text" id="autor-nuevo" list="opciones-autores" autocomplete="off" aria-describedby="autor-nuevo-ayuda error-autor-nuevo">
+              <button type="button" id="agregar-autor">Agregar</button>
+            </div>
+            <datalist id="opciones-autores"></datalist>
+            <p id="autor-nuevo-ayuda" class="ayuda">El autor se suma marcado en la lista, listo para este libro.</p>
+            <p id="error-autor-nuevo" class="error-campo"></p>
+          </div>
           <p id="error-libro-autores" class="error-campo"></p>
         </fieldset>
 
@@ -110,7 +120,7 @@
           <p id="msg-libros-vacio" class="mensaje mensaje--info" role="status" hidden>No hay libros registrados todavía.</p>
           <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-lista-libros">
             <table class="tabla">
-              <thead><tr><th scope="col">Título</th><th scope="col">ISBN</th><th scope="col">Editorial</th><th scope="col">Género</th><th scope="col">Autores</th><th scope="col" class="num">Precio</th></tr></thead>
+              <thead><tr><th scope="col">Título</th><th scope="col">ISBN</th><th scope="col">Editorial</th><th scope="col">Género</th><th scope="col">Autor, es</th><th scope="col" class="num">Precio</th></tr></thead>
               <tbody id="tabla-libros">
               </tbody>
             </table>
@@ -249,6 +259,7 @@
   </footer>
   <script src="js/data/seed.js"></script>
   <script src="js/services/store.js"></script>
+  <script src="js/domain/texto.js"></script>
   <script src="js/domain/catalogo.js"></script>
   <script src="js/domain/libros.js"></script>
   <script src="js/domain/clientes.js"></script>

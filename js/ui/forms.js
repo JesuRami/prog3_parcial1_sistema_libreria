@@ -79,6 +79,8 @@
     var resultado = document.getElementById('resultado-libro');
     var store = Libreria.store;
 
+    iniciarAltaAutorNuevo();
+
     formulario.addEventListener('submit', function (evento) {
       evento.preventDefault();
       limpiarErrores(formulario, resumen);
@@ -97,16 +99,87 @@
         return;
       }
 
-      var guardado = store.agregarLibro(validacion.libro);
+      var libro = validacion.libro;
+      // Editorial nueva: se suma al conjunto local en el mismo alta, para que
+      // el libro quede relacionado con una editorial existente (consigna,
+      // Ejercicio 4: «la editorial … existan en los datos locales»).
+      var mensaje = 'Libro «' + libro.titulo + '» guardado correctamente.';
+      if (libro.editorialNueva) {
+        var editorialNueva = store.agregarEditorial({ nombre: libro.editorialNueva });
+        libro.editorialId = editorialNueva.id;
+        mensaje += ' Editorial nueva agregada: «' + editorialNueva.nombre + '».';
+        delete libro.editorialNueva;
+      }
+
+      var guardado = store.agregarLibro(libro);
       formulario.reset();
       alCambiar();
-      mostrarResultado(resultado, 'Libro «' + guardado.titulo + '» guardado correctamente.', false);
+      mostrarResultado(resultado, mensaje, false);
       formulario.elements.titulo.focus();
     });
 
     formulario.addEventListener('reset', function () {
       limpiarErrores(formulario, resumen);
       ocultarResultado(resultado);
+    });
+  }
+
+  // Alta de un autor nuevo desde el formulario de libro (excepción de la
+  // regla 16): se suma al conjunto local y aparece marcado en las casillas,
+  // listo para combinarse con cualquier otro autor en el mismo alta.
+  // Resuelve sus propias dependencias (store, textos, render): no depende
+  // de variables locales de otra función.
+  function iniciarAltaAutorNuevo() {
+    var entrada = document.getElementById('autor-nuevo');
+    var boton = document.getElementById('agregar-autor');
+    var aviso = document.getElementById('error-autor-nuevo');
+    var casillas = document.querySelector('#libro-autores .lista-check');
+    var sugerencias = document.getElementById('opciones-autores');
+    var store = Libreria.store;
+
+    if (!entrada || !boton || !aviso || !casillas || !sugerencias) {
+      return;
+    }
+
+    function agregarNuevoAutor() {
+      aviso.textContent = '';
+      entrada.removeAttribute('aria-invalid');
+      var nombre = entrada.value.replace(/\s+/g, ' ').trim();
+      if (nombre === '') {
+        aviso.textContent = 'Escribí el nombre del autor nuevo.';
+        entrada.setAttribute('aria-invalid', 'true');
+        entrada.focus();
+        return;
+      }
+
+      var clave = Libreria.libros.claveDeNombre(nombre);
+      var existente = null;
+      store.getAutores().forEach(function (autor) {
+        if (Libreria.libros.claveDeNombre(autor.nombre) === clave) {
+          existente = autor;
+        }
+      });
+      if (existente) {
+        aviso.textContent = '«' + existente.nombre + '» ya está en la lista: marcalo en las casillas.';
+        entrada.setAttribute('aria-invalid', 'true');
+        entrada.focus();
+        return;
+      }
+
+      var creado = store.agregarAutor({ nombre: nombre });
+      entrada.value = '';
+      Libreria.render.renderAutores(casillas, store.getAutores(), creado.id);
+      Libreria.render.renderDatalist(sugerencias, store.getAutores(), function (a) { return a.nombre; });
+      entrada.focus();
+    }
+
+    boton.addEventListener('click', agregarNuevoAutor);
+    // Enter en el campo agrega el autor en lugar de enviar el libro.
+    entrada.addEventListener('keydown', function (evento) {
+      if (evento.key === 'Enter') {
+        evento.preventDefault();
+        agregarNuevoAutor();
+      }
     });
   }
 

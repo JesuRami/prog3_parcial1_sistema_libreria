@@ -22,13 +22,41 @@
     return window.Libreria.store.buscarPorId(coleccion, id) !== null;
   }
 
+  // Los nombres se comparan sin mayúsculas, sin tildes y con los espacios
+  // colapsados, para no dar de alta editoriales duplicadas por tipeo.
+  function claveDeNombre(nombre) {
+    return window.Libreria.texto.quitarTildes(nombre)
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
+  }
+
+  // Devuelve la editorial del conjunto local cuyo nombre coincide con el
+  // texto escrito (sin distinguir mayúsculas ni tildes), o null si no está:
+  // en ese caso es una editorial nueva y se suma al conjunto al guardar.
+  function buscarEditorialPorNombre(texto, editoriales) {
+    var clave = claveDeNombre(texto);
+    if (clave === '') {
+      return null;
+    }
+    for (var i = 0; i < editoriales.length; i++) {
+      if (claveDeNombre(editoriales[i].nombre) === clave) {
+        return editoriales[i];
+      }
+    }
+    return null;
+  }
+
   // Devuelve { errores: { campo: mensaje }, libro }; `libro` solo si no hay errores.
   function validarLibro(datos, contexto) {
     var errores = {};
     var titulo = String(datos.titulo).trim();
     var isbn = String(datos.isbn).trim();
     var precio = parsearPrecio(datos.precio);
-    var editorialId = Number(datos.editorial);
+    var editorialExistente = String(datos.editorial).trim() === ''
+      ? null
+      : buscarEditorialPorNombre(datos.editorial, contexto.editoriales);
+    var nombreEditorial = String(datos.editorial).replace(/\s+/g, ' ').trim();
     var generoId = datos.genero === '' ? null : Number(datos.genero);
     var autorIds = datos.autores.map(Number);
 
@@ -55,11 +83,12 @@
       errores.precio = 'El precio debe ser mayor que cero.';
     }
 
-    if (datos.editorial === '') {
-      errores.editorial = 'Elegí una editorial.';
-    } else if (!existe(contexto.editoriales, editorialId)) {
-      errores.editorial = 'La editorial elegida no existe.';
+    if (String(datos.editorial).trim() === '') {
+      errores.editorial = 'La editorial no puede estar vacía.';
     }
+    // Si el texto no coincide con ninguna editorial del conjunto local es
+    // una editorial nueva: se acepta y se suma al conjunto al guardar el
+    // libro (excepción de la regla 16, decisión del propietario 22/10/2026).
 
     if (generoId !== null && !existe(contexto.generos, generoId)) {
       errores.genero = 'El género elegido no existe.';
@@ -80,7 +109,8 @@
         titulo: titulo,
         isbn: isbn,
         precio: precio,
-        editorialId: editorialId,
+        editorialId: editorialExistente ? editorialExistente.id : null,
+        editorialNueva: editorialExistente ? null : nombreEditorial,
         generoId: generoId,
         autorIds: autorIds
       }
@@ -90,6 +120,8 @@
   window.Libreria.libros = {
     normalizarIsbn: normalizarIsbn,
     parsearPrecio: parsearPrecio,
+    claveDeNombre: claveDeNombre,
+    buscarEditorialPorNombre: buscarEditorialPorNombre,
     validarLibro: validarLibro
   };
 })();

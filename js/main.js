@@ -53,9 +53,10 @@
     }));
     Libreria.render.renderTablaClientes(clientes);
 
-    Libreria.render.renderOpciones(document.getElementById('libro-editorial'), contexto.editoriales, function (e) { return e.nombre; });
+    Libreria.render.renderDatalist(document.getElementById('opciones-editoriales'), contexto.editoriales, function (e) { return e.nombre; });
     Libreria.render.renderOpciones(document.getElementById('libro-genero'), contexto.generos, function (g) { return g.nombre; });
     Libreria.render.renderAutores(document.querySelector('#libro-autores .lista-check'), contexto.autores);
+    Libreria.render.renderDatalist(document.getElementById('opciones-autores'), contexto.autores, function (a) { return a.nombre; });
 
     Libreria.render.renderOpciones(document.getElementById('venta-cliente'), clientes, function (c) { return c.nombreCompleto; });
     Libreria.render.renderOpciones(document.getElementById('venta-libro'), libros, function (l) { return l.titulo; });

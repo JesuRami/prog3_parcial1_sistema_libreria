@@ -166,8 +166,35 @@ select[multiple] { min-height: 7rem; }
 
 /* ---------- Autores como casillas ---------- */
 .lista-check { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); }
+/* Tope de altura de la lista de autores: la página no crece al crecer el
+   conjunto; el desplazamiento queda dentro del propio contenedor (mismo
+   criterio que las tablas anchas). */
+.lista-scroll { max-height: 14rem; overflow-y: auto; padding-right: 0.25rem; }
 .check { display: flex; align-items: center; gap: var(--esp-1); font-weight: 400; min-height: 44px; }
 .check input { width: 1.25rem; min-height: 0; height: 1.25rem; flex: none; }
+
+/* ---------- Alta de autor nuevo dentro del formulario de libro ---------- */
+/* El par campo + botón comparte renglón; si no entra (320 px), el botón
+   baja a un renglón propio por el flex-wrap, sin desbordes horizontales. */
+.control-con-accion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-1);
+  align-items: stretch;
+}
+.control-con-accion input { flex: 1 1 10rem; min-width: 0; width: auto; }
+.control-con-accion button {
+  flex: none;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #6b7a8a;
+  border-radius: var(--radio);
+  background: var(--blanco);
+  color: var(--tinta);
+  white-space: nowrap;
+}
 
 /* ---------- Venta ---------- */
 .cantidad { width: 5rem; text-align: right; }

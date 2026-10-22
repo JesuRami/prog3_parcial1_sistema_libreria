@@ -34,7 +34,7 @@
     agregarDato(datos, 'ISBN', libro.isbn);
     agregarDato(datos, 'Editorial', libro.editorial);
     agregarDato(datos, 'Género', libro.genero);
-    agregarDato(datos, 'Autores', libro.autores);
+    agregarDato(datos, 'Autor, es', libro.autores);
     agregarDato(datos, 'Precio', libro.precio, 'precio');
     tarjeta.appendChild(datos);
     item.appendChild(tarjeta);
@@ -87,21 +87,46 @@
     select.value = previo;
   }
 
-  function renderAutores(contenedor, autores) {
+  // Reconstruye las sugerencias de un <datalist> en orden alfabético
+  // (insensible a mayúsculas y tildes). No toca el valor del <input>
+  // asociado, para no corromper lo que el usuario esté escribiendo.
+  function renderDatalist(datalist, items, obtenerTexto) {
+    var textos = items.map(function (item) {
+      return obtenerTexto(item);
+    });
+    textos.sort(function (a, b) {
+      return a.localeCompare(b, 'es', { sensitivity: 'base' });
+    });
+    vaciar(datalist);
+    textos.forEach(function (texto) {
+      var opcion = document.createElement('option');
+      opcion.value = texto;
+      datalist.appendChild(opcion);
+    });
+  }
+
+  // Reconstruye el grupo de casillas de autores. La lista se muestra en
+  // orden alfabético (insensible a mayúsculas y tildes) y conserva las
+  // casillas que el usuario ya había marcado; `resaltarId` fuerza la
+  // marca del autor recién agregado.
+  function renderAutores(contenedor, autores, resaltarId) {
     var marcados = Array.prototype.filter.call(
       contenedor.querySelectorAll('input[name="autores"]'),
       function (check) { return check.checked; }
     ).map(function (check) { return check.value; });
 
+    var ordenados = autores.slice().sort(function (a, b) {
+      return a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' });
+    });
     vaciar(contenedor);
-    autores.forEach(function (autor) {
+    ordenados.forEach(function (autor) {
       var item = document.createElement('li');
       var etiqueta = crearElemento('label', undefined, 'check');
       var check = document.createElement('input');
       check.type = 'checkbox';
       check.name = 'autores';
       check.value = String(autor.id);
-      check.checked = marcados.indexOf(check.value) !== -1;
+      check.checked = marcados.indexOf(check.value) !== -1 || autor.id === resaltarId;
       etiqueta.appendChild(check);
       etiqueta.appendChild(document.createTextNode(' ' + autor.nombre));
       item.appendChild(etiqueta);
@@ -148,6 +173,7 @@
   window.Libreria.render = {
     renderCatalogo: renderCatalogo,
     renderOpciones: renderOpciones,
+    renderDatalist: renderDatalist,
     renderAutores: renderAutores,
     renderTablaLibros: renderTablaLibros,
     renderTablaClientes: renderTablaClientes

@@ -1,23 +1,31 @@
-/* Lógica del catálogo (Ejercicio 3): filtro por título y proyección de un
-   libro a los datos que muestra la vista. No toca el DOM. */
+/* Lógica del catálogo (Ejercicio 3): filtro por título (sin distinguir
+   mayúsculas ni tildes) y proyección de un libro a los datos que muestra
+   la vista. No toca el DOM. */
 (function () {
   'use strict';
 
   var SIN_CLASIFICAR = 'Sin clasificar';
 
+  // Quita tildes para comparar (á=a, é=e, …). Implementación compartida en
+  // js/domain/texto.js: la usa también el control anti-redundante del alta.
+  var quitarTildes = window.Libreria.texto.quitarTildes;
+
+  // Normaliza igual el texto buscado y los títulos, para que la
+  // comparación no dependa de mayúsculas/minúsculas ni de tildes.
   function normalizarBusqueda(texto) {
-    return String(texto).trim().toLowerCase();
+    return quitarTildes(String(texto).trim()).toLowerCase();
   }
 
   // Búsqueda vacía devuelve todos los libros; si no, coincidencias parciales
-  // en el título sin distinguir mayúsculas de minúsculas.
+  // en el título sin distinguir mayúsculas ni tildes (y sin plegar la ñ:
+  // buscar "senor" no encuentra "señor").
   function filtrarPorTitulo(libros, texto) {
     var busqueda = normalizarBusqueda(texto);
     if (busqueda === '') {
       return libros.slice();
     }
     return libros.filter(function (libro) {
-      return libro.titulo.toLowerCase().indexOf(busqueda) !== -1;
+      return quitarTildes(libro.titulo).toLowerCase().indexOf(busqueda) !== -1;
     });
   }
 

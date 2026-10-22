@@ -54,6 +54,12 @@
     buscarPorId: buscarPorId,
     agregarVenta: function (venta) { return agregar(estado.ventas, venta); },
     agregarLibro: function (libro) { return agregar(estado.libros, libro); },
-    agregarCliente: function (cliente) { return agregar(estado.clientes, cliente); }
+    agregarCliente: function (cliente) { return agregar(estado.clientes, cliente); },
+    // Excepción de la regla 16: la editorial nueva del alta de libro se suma
+    // al conjunto local en el momento de guardar (propietario: 22/10/2026).
+    agregarEditorial: function (editorial) { return agregar(estado.editoriales, editorial); },
+    // Autor nuevo desde el formulario de alta de libro (excepción de la
+    // regla 16, decisión del propietario 22/10/2026).
+    agregarAutor: function (autor) { return agregar(estado.autores, autor); }
   };
 })();
