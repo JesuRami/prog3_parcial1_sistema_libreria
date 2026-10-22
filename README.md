@@ -5,7 +5,7 @@ sin librerías, frameworks, CDNs, compilación ni backend. Los datos viven en el
 
 **Alumnos y legajos:**  
 Lautaro Fernández, .  
-Daniela Díaz, .  
+Daniela Díaz, 53857.  
 Jesús Ramírez, 54010.  
 Danilo Serrano, .  
 
