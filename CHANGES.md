@@ -85,7 +85,7 @@ La consigna no sustenta más paralelismo: es un frontend estático único, sin b
 
 ### [C-01] `estructura-y-pantallas-html`
 
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado
 - **Título en la consigna**: Ejercicio 1 · Estructura y pantallas HTML
 - **Puntaje**: 20 — «Vistas y navegación: 10; semántica, formularios y estados: 10»
 - **Scope**:
@@ -104,7 +104,7 @@ La consigna no sustenta más paralelismo: es un frontend estático único, sin b
 
 ### [C-02] `presentacion-con-css-adaptable`
 
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado
 - **Título en la consigna**: Ejercicio 2 · Presentación con CSS y uso adaptable
 - **Puntaje**: 20 — «Coherencia y organización: 8; adaptación: 8; accesibilidad básica: 4»
 - **Scope**:
@@ -231,7 +231,7 @@ Cada fila es una restricción **literal de la consigna**. Si algo no está acá,
 | 13 | `alt` en imágenes informativas; decorativas sin repetir información | `Ejercicio 2`: «Las imágenes informativas tienen texto alternativo; las decorativas no repiten información innecesaria.» |
 | 14 | HTML semántico; campos con etiqueta; botones con texto descriptivo; tablas con encabezados; mensajes de vacío/error/resultado | `Ejercicio 1`: «Se incluyen encabezado, navegación y contenido principal con etiquetas semánticas. Cada campo posee una etiqueta asociada; los botones tienen textos que describen su acción. Las tablas incluyen encabezados. Se incorporan mensajes para listas vacías, búsquedas sin resultados y operaciones correctas o rechazadas.» |
 | 15 | Datos de usuarios insertados como texto en el DOM (inyección segura) | `Ejercicio 3`: «Los datos escritos por usuarios se insertan como texto en el DOM.» |
-| 16 | Sin `fetch`; sin administrar editoriales/géneros/autores | `Ejercicio 3`: «No se requiere traer datos con fetch ni administrar altas, bajas y modificaciones de editoriales, géneros o autores.» |
+| 16 | Sin `fetch`. La consigna **no exige** CRUD de editoriales/géneros/autores: sin pantallas de administración para esos conjuntos | `Ejercicio 3`: «No se requiere traer datos con fetch ni administrar altas, bajas y modificaciones de editoriales, géneros o autores.» **Excepción autorizada por el propietario del repo (22/10/2026, reversible)**: en el alta de libro, editorial y autor admiten texto libre en la misma barra (listado de los ya registrados + anti-redundancia sin mayúsculas ni tildes); el valor nuevo se suma al conjunto local al guardar el libro. + Decisión del usuario |
 | 17 | Sin edición ni eliminación de registros (libros, clientes) | `Ejercicio 4`: «No se exige editar ni eliminar registros.» |
 | 18 | Ventas confirmadas inmutables desde la interfaz; precio unitario histórico | `Ejercicio 5`: «Las ventas confirmadas no se editan ni eliminan desde la interfaz.»; «El precio unitario se copia al renglón como valor histórico, de modo que no se obtiene nuevamente desde el precio actual del catálogo al consultar el historial.» |
 | 19 | ISBN comparado sin espacios ni guiones; sin dígito de control | `Ejercicio 4`: «el ISBN se compara sin espacios ni guiones; no se requiere implementar su dígito de control.» |
