@@ -190,7 +190,7 @@ La consigna no sustenta más paralelismo: es un frontend estático único, sin b
 
 ### [C-06] `persistencia-verificacion-y-documentacion`
 
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado (persistencia `f7f90d3`; 8/8 casos manuales registrados con resultado observado; línea de autores del README a cargo del dueño)
 - **Título en la consigna**: Ejercicio 6 · Persistencia, verificación y documentación
 - **Puntaje**: 10 — «Persistencia: 4; pruebas manuales registradas: 3; documentación y entrega: 3»
 - **Scope**:

@@ -21,19 +21,19 @@
 - [x] 3.1 Redactar pasos para abrir el proyecto sin npm, navegación entre las cinco vistas, funcionalidades implementadas y pendientes, ubicación de los datos iniciales en `js/data/seed.js`, procedencia de la imagen local y estructura del proyecto; verificar que cada sección exista y coincida con el código (commit `f7f90d3`).
 - [x] 3.2 Documentar el funcionamiento y los límites de `localStorage`, incluida la dependencia del navegador, del perfil y de la ubicación, la falta de compartición entre usuarios y el efecto de borrar los datos del sitio; verificar que esas afirmaciones figuren en el README (commit `f7f90d3`).
 - [x] 3.3 Documentar las seis claves y la estructura del catálogo guardado (`precio` dentro de `libreria.libros`) y los pasos de la comprobación guiada del precio histórico; verificar que un lector pueda reproducirlos con las herramientas del navegador (commit `f7f90d3`).
-- [ ] 3.4 Completar el nombre y el legajo de los autores en el README, hoy con el texto de plantilla `[completar con nombre y legajo]`; verificar que no quede ningún texto entre corchetes en ese apartado.
+- [ ] 3.4 Completar el nombre y el legajo de los autores en el README, hoy con el texto de plantilla `[completar con nombre y legajo]`; verificar que no quede ningún texto entre corchetes en ese apartado. **A cargo del dueño del repositorio** (decidió completarlo a mano): no bloquea el cierre técnico del change.
 
 ## 4. Casos manuales de la consigna
 
 - [x] 4.1 Ejecutar y registrar el caso 1 (búsqueda en mayúsculas, búsqueda vacía y texto inexistente) con el resultado observado; verificar que la fila describa los tres comportamientos y figure como aprobada (commit `cd0c3c7`).
 - [x] 4.2 Ejecutar y registrar los casos 2 a 6 (ISBN duplicado, email inválido y duplicado, venta inválida y libro repetido, venta válida con importes, precio histórico tras cambiar el catálogo) con el resultado observado; verificar que cada fila describa los valores y mensajes reales (commit `c63938a`).
 - [x] 4.3 Ejecutar y registrar el caso 8 (navegación por teclado y anchos de 320 px y 1280 px) con el resultado observado; verificar que la fila indique foco visible y ausencia de desplazamiento horizontal de página (commit `16452c0`).
-- [ ] 4.4 Ejecutar el caso 7 (recarga después de altas y venta) y registrar el resultado observado en el README, reemplazando «Pendiente de ejecución»; verificar que tras recargar se recuperen las altas y la venta sin duplicar ejemplos ni ventas.
+- [x] 4.4 Ejecutar el caso 7 (recarga después de altas y venta) y registrar el resultado observado en el README, reemplazando «Pendiente de ejecución»; verificar que tras recargar se recuperen las altas y la venta sin duplicar ejemplos ni ventas (resultado: 7 libros, 4 clientes y 1 venta, sin duplicar los ejemplos; fila 7 del README).
 
 ## 5. Cierre del change
 
-- [ ] 5.1 Revisar la tabla de casos manuales del README y verificar que los 8 casos tengan resultado observado y que ninguno figure aprobado sin haber sido ejecutado; registrar la comprobación antes de cerrar el change.
-- [ ] 5.2 Marcar `C-06` como completado en `CHANGES.md` con su estado `[x]`; verificar que el cambio de estado coincida con los casos ejecutados y el README actualizado.
+- [x] 5.1 Revisar la tabla de casos manuales del README y verificar que los 8 casos tengan resultado observado y que ninguno figure aprobado sin haber sido ejecutado; registrar la comprobación antes de cerrar el change (8/8 filas con resultado observado; ninguna pendiente).
+- [x] 5.2 Marcar `C-06` como completado en `CHANGES.md` con su estado `[x]`; verificar que el cambio de estado coincida con los casos ejecutados y el README actualizado.
 
 ## Workflow follow-up
 
