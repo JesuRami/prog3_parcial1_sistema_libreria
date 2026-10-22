@@ -32,9 +32,13 @@
     setTimeout(actualizarCatalogo, 0);
   }
 
-  function actualizarAvisoDeMaqueta() {
-    var aviso = document.getElementById('aviso-maqueta');
-    aviso.textContent = 'Catálogo, altas, ventas e historial ya funcionan con los datos locales. Todavía no se guardan en localStorage: al recargar la página se pierden los registros nuevos.';
+  function actualizarAvisoDeDatos() {
+    var aviso = document.getElementById('aviso-datos');
+    if (Libreria.persistencia.disponible()) {
+      aviso.textContent = 'Los datos de ejemplo se cargan la primera vez y quedan guardados en este navegador (localStorage): lo que agregues se conserva al recargar.';
+    } else {
+      aviso.textContent = 'Este navegador no permite guardar datos (localStorage bloqueado): la aplicación funciona, pero lo nuevo se pierde al recargar.';
+    }
   }
 
   // Redibuja todo lo que depende de libros y clientes, sin recargar la página.
@@ -76,7 +80,7 @@
     Libreria.forms.iniciarFormularioCliente(actualizarListadosYOpciones);
     Libreria.ventasUi.iniciar();
 
-    actualizarAvisoDeMaqueta();
+    actualizarAvisoDeDatos();
     actualizarListadosYOpciones();
   }
 
