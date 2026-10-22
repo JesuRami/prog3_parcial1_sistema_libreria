@@ -1,4 +1,4 @@
-# Librería Lomo — Parcial 1 · Programación III (UTN)
+# Librería Lomo — Parcial 1 · Programación III (UTN), 2pro1. Grupo Saferazi.
 
 Aplicación de gestión de una librería hecha **únicamente con HTML, CSS y JavaScript nativos**,
 sin librerías, frameworks, CDNs, compilación ni backend. Los datos viven en el navegador.
