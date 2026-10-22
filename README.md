@@ -1,5 +1,4 @@
-# Parcial 1 · Programación III (UTN), 2pro1. Grupo Saferazi.
-## Librería Lomo.
+# Parcial 1: Librería con SDD, Programación III (UTN), 2pro1. Grupo Saferazi.
 
 Aplicación de gestión de una librería hecha **únicamente con HTML, CSS y JavaScript nativos**,
 sin librerías, frameworks, CDNs, compilación ni backend. Los datos viven en el navegador.
@@ -9,6 +8,8 @@ Lautaro Fernández, .
 Daniela Díaz, .  
 Jesús Ramírez, 54010.  
 Danilo Serrano, .  
+
+**Docente:** Matías Torres.  
 
 ---
 
