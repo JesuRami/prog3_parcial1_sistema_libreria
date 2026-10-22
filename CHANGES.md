@@ -131,7 +131,7 @@ La consigna no sustenta más paralelismo: es un frontend estático único, sin b
 
 ### [C-03] `datos-locales-catalogo-y-filtro`
 
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado
 - **Título en la consigna**: Ejercicio 3 · Datos locales, catálogo y filtro
 - **Puntaje**: 15 — «Modelo y ejemplos: 5; renderizado: 5; filtro y estados: 5»
 - **Scope**:
