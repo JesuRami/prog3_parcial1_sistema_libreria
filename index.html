@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <!-- Scripts (los agregan los ejercicios 3 a 6), clásicos y en este orden, antes de </body>:
-       js/data/seed.js, js/services/storage.js, js/services/store.js, js/domain/catalogo.js,
-       js/domain/libros.js, js/domain/clientes.js, js/domain/ventas.js,
-       js/ui/render.js, js/ui/forms.js, js/ui/nav.js, js/main.js -->
+
 </head>
 <body>
   <a class="salto" href="#contenido">Saltar al contenido</a>
@@ -82,8 +79,6 @@
           <label for="libro-editorial">Editorial</label>
           <select id="libro-editorial" name="editorial" required aria-describedby="error-libro-editorial">
             <option value="">Elegí una editorial</option>
-              <option value="1">Editorial Astral</option>
-              <option value="2">Editorial Norte</option>
           </select>
           <p id="error-libro-editorial" class="error-campo"></p>
         </div>
@@ -91,8 +86,6 @@
           <label for="libro-genero">Género</label>
           <select id="libro-genero" name="genero" aria-describedby="error-libro-genero">
             <option value="">Sin clasificar</option>
-            <option value="1">Ciencia ficción</option>
-            <option value="2">Ensayo</option>
           </select>
           <p id="error-libro-genero" class="error-campo"></p>
         </div>
@@ -100,9 +93,6 @@
           <legend>Autores</legend>
           <p id="libro-autores-ayuda" class="ayuda">Elegí al menos un autor.</p>
           <ul class="lista-check">
-                <li><label class="check"><input type="checkbox" name="autores" value="1"> Valeria Ortiz</label></li>
-                <li><label class="check"><input type="checkbox" name="autores" value="2"> Nicolás Ferrari</label></li>
-                <li><label class="check"><input type="checkbox" name="autores" value="3"> Camila Sosa</label></li>
           </ul>
           <p id="error-libro-autores" class="error-campo"></p>
         </fieldset>
@@ -122,12 +112,6 @@
             <table class="tabla">
               <thead><tr><th scope="col">Título</th><th scope="col">ISBN</th><th scope="col">Editorial</th><th scope="col">Género</th><th scope="col">Autores</th><th scope="col" class="num">Precio</th></tr></thead>
               <tbody id="tabla-libros">
-            <tr><td>El Jardín de las Máquinas</td><td>978-950-0001-1</td><td>Editorial Astral</td><td>Ciencia ficción</td><td>Valeria Ortiz</td><td class="num">$ 1500.00</td></tr>
-            <tr><td>Cartografías del Silencio</td><td>978-950-0002-2</td><td>Editorial Norte</td><td>Ensayo</td><td>Nicolás Ferrari</td><td class="num">$ 2000.00</td></tr>
-            <tr><td>Manual de Senderos</td><td>978-950-0003-3</td><td>Editorial Astral</td><td>Sin clasificar</td><td>Camila Sosa</td><td class="num">$ 1800.00</td></tr>
-            <tr><td>El Peso del Agua</td><td>978-950-0004-4</td><td>Editorial Norte</td><td>Ciencia ficción</td><td>Valeria Ortiz, Nicolás Ferrari</td><td class="num">$ 2500.00</td></tr>
-            <tr><td>Diarios de un Viajero</td><td>978-950-0005-5</td><td>Editorial Astral</td><td>Ensayo</td><td>Camila Sosa</td><td class="num">$ 1200.00</td></tr>
-            <tr><td>Códigos y Sombras</td><td>978-950-0006-6</td><td>Editorial Norte</td><td>Sin clasificar</td><td>Nicolás Ferrari, Camila Sosa</td><td class="num">$ 3000.00</td></tr>
               </tbody>
             </table>
           </div>
@@ -167,9 +151,6 @@
             <table class="tabla">
               <thead><tr><th scope="col">Nombre completo</th><th scope="col">Email</th></tr></thead>
               <tbody id="tabla-clientes">
-            <tr><td>María Gómez</td><td>maria.gomez@ejemplo.com</td></tr>
-            <tr><td>Juan Pérez</td><td>juan.perez@ejemplo.com</td></tr>
-            <tr><td>Lucía Ramírez</td><td>lucia.ramirez@ejemplo.com</td></tr>
               </tbody>
             </table>
           </div>
@@ -185,9 +166,6 @@
           <label for="venta-cliente">Cliente</label>
           <select id="venta-cliente" name="cliente" required aria-describedby="error-venta-cliente">
             <option value="">Elegí un cliente</option>
-              <option value="1">María Gómez</option>
-              <option value="2">Juan Pérez</option>
-              <option value="3">Lucía Ramírez</option>
           </select>
           <p id="error-venta-cliente" class="error-campo"></p>
         </div>
@@ -198,12 +176,6 @@
             <label for="venta-libro">Libro</label>
             <select id="venta-libro" name="libro" aria-describedby="error-venta-libro">
               <option value="">Elegí un libro</option>
-              <option value="1">El Jardín de las Máquinas</option>
-              <option value="2">Cartografías del Silencio</option>
-              <option value="3">Manual de Senderos</option>
-              <option value="4">El Peso del Agua</option>
-              <option value="5">Diarios de un Viajero</option>
-              <option value="6">Códigos y Sombras</option>
             </select>
             <p id="error-venta-libro" class="error-campo"></p>
           </div>
@@ -223,19 +195,17 @@
           <table class="tabla">
             <thead><tr><th scope="col">Libro</th><th scope="col" class="num">Cantidad</th><th scope="col" class="num">Precio unitario</th><th scope="col" class="num">Subtotal</th><th scope="col">Acciones</th></tr></thead>
             <tbody id="tabla-renglones">
-              <tr><td>El Jardín de las Máquinas</td><td class="num"><label class="solo-lectores" for="cantidad-renglon-1">Cantidad de El Jardín de las Máquinas</label><input class="cantidad" type="number" id="cantidad-renglon-1" min="1" step="1" value="2"></td><td class="num">$ 1500.00</td><td class="num">$ 3000.00</td><td><button type="button" class="boton boton--secundario boton--chico">Quitar<span class="solo-lectores"> El Jardín de las Máquinas</span></button></td></tr>
-              <tr><td>Cartografías del Silencio</td><td class="num"><label class="solo-lectores" for="cantidad-renglon-2">Cantidad de Cartografías del Silencio</label><input class="cantidad" type="number" id="cantidad-renglon-2" min="1" step="1" value="1"></td><td class="num">$ 2000.00</td><td class="num">$ 2000.00</td><td><button type="button" class="boton boton--secundario boton--chico">Quitar<span class="solo-lectores"> Cartografías del Silencio</span></button></td></tr>
             </tbody>
-            <tfoot><tr><th scope="row" colspan="3">Total</th><td id="venta-total" class="num total">$ 5000.00</td><td></td></tr></tfoot>
+            <tfoot><tr><th scope="row" colspan="3">Total</th><td id="venta-total" class="num total">$ 0.00</td><td></td></tr></tfoot>
           </table>
         </div>
 
         <section class="resumen" aria-labelledby="t-resumen">
           <h3 id="t-resumen">Resumen de la venta</h3>
           <dl class="datos">
-            <dt>Cliente</dt><dd id="resumen-cliente">María Gómez</dd>
-            <dt>Renglones</dt><dd id="resumen-renglones">2</dd>
-            <dt>Total</dt><dd id="resumen-total" class="precio">$ 5000.00</dd>
+            <dt>Cliente</dt><dd id="resumen-cliente">Sin elegir</dd>
+            <dt>Renglones</dt><dd id="resumen-renglones">0</dd>
+            <dt>Total</dt><dd id="resumen-total" class="precio">$ 0.00</dd>
           </dl>
         </section>
 
@@ -254,23 +224,20 @@
         <table class="tabla">
           <thead><tr><th scope="col">Identificador</th><th scope="col">Fecha</th><th scope="col">Cliente</th><th scope="col" class="num">Total</th><th scope="col">Detalle</th></tr></thead>
           <tbody id="tabla-historial">
-            <tr><td>V-0001</td><td>19/10/2026 11:30</td><td>María Gómez</td><td class="num">$ 5000.00</td><td><button type="button" class="boton boton--secundario boton--chico">Ver detalle<span class="solo-lectores"> de la venta V-0001</span></button></td></tr>
           </tbody>
         </table>
       </div>
 
       <section id="detalle-venta" class="tarjeta" aria-labelledby="t-detalle">
-        <h2 id="t-detalle">Detalle de la venta V-0001</h2>
+        <h2 id="t-detalle">Detalle de la venta</h2>
         <p id="msg-detalle-vacio" class="mensaje mensaje--info" role="status" hidden>Elegí una venta del listado para ver sus renglones.</p>
-        <p id="detalle-resumen">Cliente: María Gómez · Fecha: 19/10/2026 11:30</p>
+        <p id="detalle-resumen"></p>
         <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-detalle">
           <table class="tabla">
             <thead><tr><th scope="col">Libro</th><th scope="col" class="num">Cantidad</th><th scope="col" class="num">Precio unitario</th><th scope="col" class="num">Subtotal</th></tr></thead>
             <tbody id="tabla-detalle">
-              <tr><td>El Jardín de las Máquinas</td><td class="num">2</td><td class="num">$ 1500.00</td><td class="num">$ 3000.00</td></tr>
-              <tr><td>Cartografías del Silencio</td><td class="num">1</td><td class="num">$ 2000.00</td><td class="num">$ 2000.00</td></tr>
             </tbody>
-            <tfoot><tr><th scope="row" colspan="3">Total</th><td class="num total">$ 5000.00</td></tr></tfoot>
+            <tfoot><tr><th scope="row" colspan="3">Total</th><td id="detalle-total" class="num total"></td></tr></tfoot>
           </table>
         </div>
       </section>
@@ -283,7 +250,12 @@
   <script src="js/data/seed.js"></script>
   <script src="js/services/store.js"></script>
   <script src="js/domain/catalogo.js"></script>
+  <script src="js/domain/libros.js"></script>
+  <script src="js/domain/clientes.js"></script>
+  <script src="js/domain/ventas.js"></script>
   <script src="js/ui/render.js"></script>
+  <script src="js/ui/forms.js"></script>
+  <script src="js/ui/ventas-ui.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

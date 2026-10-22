@@ -67,7 +67,89 @@
     mensajeSinResultados.hidden = !(total > 0 && libros.length === 0);
   }
 
+  function crearOpcion(valor, texto) {
+    var opcion = document.createElement('option');
+    opcion.value = String(valor);
+    opcion.textContent = texto;
+    return opcion;
+  }
+
+  // Reconstruye un <select> conservando su primera opción (el marcador
+  // «Elegí…» / «Sin clasificar») y la selección previa si todavía existe.
+  function renderOpciones(select, items, obtenerTexto) {
+    var previo = select.value;
+    while (select.options.length > 1) {
+      select.remove(1);
+    }
+    items.forEach(function (item) {
+      select.appendChild(crearOpcion(item.id, obtenerTexto(item)));
+    });
+    select.value = previo;
+  }
+
+  function renderAutores(contenedor, autores) {
+    var marcados = Array.prototype.filter.call(
+      contenedor.querySelectorAll('input[name="autores"]'),
+      function (check) { return check.checked; }
+    ).map(function (check) { return check.value; });
+
+    vaciar(contenedor);
+    autores.forEach(function (autor) {
+      var item = document.createElement('li');
+      var etiqueta = crearElemento('label', undefined, 'check');
+      var check = document.createElement('input');
+      check.type = 'checkbox';
+      check.name = 'autores';
+      check.value = String(autor.id);
+      check.checked = marcados.indexOf(check.value) !== -1;
+      etiqueta.appendChild(check);
+      etiqueta.appendChild(document.createTextNode(' ' + autor.nombre));
+      item.appendChild(etiqueta);
+      contenedor.appendChild(item);
+    });
+  }
+
+  function renderTabla(cuerpo, mensajeVacio, filas) {
+    vaciar(cuerpo);
+    filas.forEach(function (celdas) {
+      var fila = document.createElement('tr');
+      celdas.forEach(function (celda) {
+        fila.appendChild(crearElemento('td', celda.texto, celda.clase));
+      });
+      cuerpo.appendChild(fila);
+    });
+    mensajeVacio.hidden = filas.length !== 0;
+  }
+
+  // `libros` ya viene proyectado (textos listos para mostrar).
+  function renderTablaLibros(libros) {
+    renderTabla(
+      document.getElementById('tabla-libros'),
+      document.getElementById('msg-libros-vacio'),
+      libros.map(function (l) {
+        return [
+          { texto: l.titulo }, { texto: l.isbn }, { texto: l.editorial },
+          { texto: l.genero }, { texto: l.autores }, { texto: l.precio, clase: 'num' }
+        ];
+      })
+    );
+  }
+
+  function renderTablaClientes(clientes) {
+    renderTabla(
+      document.getElementById('tabla-clientes'),
+      document.getElementById('msg-clientes-vacio'),
+      clientes.map(function (c) {
+        return [{ texto: c.nombreCompleto }, { texto: c.email }];
+      })
+    );
+  }
+
   window.Libreria.render = {
-    renderCatalogo: renderCatalogo
+    renderCatalogo: renderCatalogo,
+    renderOpciones: renderOpciones,
+    renderAutores: renderAutores,
+    renderTablaLibros: renderTablaLibros,
+    renderTablaClientes: renderTablaClientes
   };
 })();

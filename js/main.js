@@ -34,7 +34,33 @@
 
   function actualizarAvisoDeMaqueta() {
     var aviso = document.getElementById('aviso-maqueta');
-    aviso.textContent = 'El catálogo ya usa los datos locales y el buscador por título. Las demás vistas siguen siendo maqueta con ejemplos estáticos.';
+    aviso.textContent = 'Catálogo, altas, ventas e historial ya funcionan con los datos locales. Todavía no se guardan en localStorage: al recargar la página se pierden los registros nuevos.';
+  }
+
+  // Redibuja todo lo que depende de libros y clientes, sin recargar la página.
+  function actualizarListadosYOpciones() {
+    var store = Libreria.store;
+    var contexto = {
+      editoriales: store.getEditoriales(),
+      generos: store.getGeneros(),
+      autores: store.getAutores()
+    };
+    var clientes = store.getClientes();
+    var libros = store.getLibros();
+
+    Libreria.render.renderTablaLibros(libros.map(function (libro) {
+      return Libreria.catalogo.proyectarLibro(libro, contexto);
+    }));
+    Libreria.render.renderTablaClientes(clientes);
+
+    Libreria.render.renderOpciones(document.getElementById('libro-editorial'), contexto.editoriales, function (e) { return e.nombre; });
+    Libreria.render.renderOpciones(document.getElementById('libro-genero'), contexto.generos, function (g) { return g.nombre; });
+    Libreria.render.renderAutores(document.querySelector('#libro-autores .lista-check'), contexto.autores);
+
+    Libreria.render.renderOpciones(document.getElementById('venta-cliente'), clientes, function (c) { return c.nombreCompleto; });
+    Libreria.render.renderOpciones(document.getElementById('venta-libro'), libros, function (l) { return l.titulo; });
+
+    actualizarCatalogo();
   }
 
   function iniciar() {
@@ -45,8 +71,12 @@
     formulario.addEventListener('reset', alLimpiarBusqueda);
     campo.addEventListener('input', actualizarCatalogo);
 
+    Libreria.forms.iniciarFormularioLibro(actualizarListadosYOpciones);
+    Libreria.forms.iniciarFormularioCliente(actualizarListadosYOpciones);
+    Libreria.ventasUi.iniciar();
+
     actualizarAvisoDeMaqueta();
-    actualizarCatalogo();
+    actualizarListadosYOpciones();
   }
 
   document.addEventListener('DOMContentLoaded', iniciar);
