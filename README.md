@@ -3,27 +3,21 @@
 Aplicación de gestión de una librería hecha **únicamente con HTML, CSS y JavaScript nativos**,
 sin librerías, frameworks, CDNs, compilación ni backend. Los datos viven en el navegador.
 
-**Autores:** _[completar con nombre y legajo]_
+**Autores:**
+Lautaro Fernández, .  
+Daniela Díaz, .  
+Jesús Ramírez, 54010.  
+Danilo Serrano, .  
 
 ---
 
 ## Cómo abrir el proyecto (sin npm)
 
 1. Descargar o clonar el repositorio en una carpeta local.
-2. Abrir el archivo **`index.html`** con doble clic (se abre en el navegador mediante `file://`).
-3. Listo: no hay que instalar nada, ni ejecutar `npm`, ni compilar. No existe `package.json`
-   ni `node_modules`, a propósito.
+2. Abrir el archivo **`index.html`**. Y ya.
 
-Requisitos y cuidados:
-
-- Navegador moderno (Chrome, Edge o Firefox actuales) con `localStorage` habilitado.
-- Abrir siempre la misma copia desde la **misma ubicación**: el almacenamiento local queda
-  asociado al origen del navegador, y mover la carpeta puede hacer que el navegador trate el
-  contenido como otro sitio.
-- La primera vez se cargan los datos de ejemplo; las siguientes se recuperan los datos guardados.
 
 ## Navegación entre vistas
-
 Es una sola página con cinco vistas, todas enlazadas desde el menú superior:
 
 | Vista | Qué muestra |
@@ -67,9 +61,6 @@ búsqueda que además ignora tildes; alta de una editorial o un autor nuevos des
 de libro (se suman al conjunto local al guardar y quedan seleccionados), con aviso cuando el
 nombre ya existe.
 
-**Funcionalidades pendientes:** ninguna de las pedidas en la consigna. El resultado real de la
-verificación manual se registra en la sección siguiente.
-
 ## Datos iniciales
 
 Los datos de ejemplo están en **`js/data/seed.js`** (todo ficticio):
@@ -82,9 +73,6 @@ Los datos de ejemplo están en **`js/data/seed.js`** (todo ficticio):
 | Libros | 6 |
 | Clientes | 3 |
 | Ventas | 0 (se crean al confirmar) |
-
-La primera vez que se abre la página, cada colección se copia a `localStorage`. A partir de
-ahí, el seed no se vuelve a escribir: si ya hay datos guardados, se usan esos.
 
 ## Almacenamiento en `localStorage`
 
@@ -120,9 +108,6 @@ Para inspeccionarlas: herramientas de desarrollo del navegador (F12) → **Appli
   el proyecto; no se comparte entre usuarios ni entre navegadores.
 - Borrar los datos del sitio (o limpiar el almacenamiento) devuelve el proyecto a su estado
   inicial con los ejemplos.
-- La cuota típica es de unos pocos megabytes por origen: suficiente para este catálogo, pero
-  no es una base de datos.
-- En modo privado o con el almacenamiento restringido, los datos pueden perderse al cerrar.
 
 ### Comprobación guiada del precio histórico (para el docente)
 
