@@ -151,7 +151,7 @@ La consigna no sustenta más paralelismo: es un frontend estático único, sin b
 
 ### [C-04] `alta-de-libros-y-clientes`
 
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado
 - **Título en la consigna**: Ejercicio 4 · Alta de libros y clientes
 - **Puntaje**: 15 — «Libros y selectores: 6; clientes: 4; validación y actualización: 5»
 - **Scope**:
@@ -169,7 +169,7 @@ La consigna no sustenta más paralelismo: es un frontend estático único, sin b
 
 ### [C-05] `venta-simulada-e-historial`
 
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado
 - **Título en la consigna**: Ejercicio 5 · Venta simulada e historial
 - **Puntaje**: 20 — «Composición y validaciones: 8; cálculos: 5; confirmación e historial inmutable: 7»
 - **Scope**:

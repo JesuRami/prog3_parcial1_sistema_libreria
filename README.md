@@ -140,11 +140,11 @@ Resultado registrado según lo observado al ejecutar cada caso (los casos se cor
 | # | Caso | Resultado esperado | Resultado observado |
 |---|------|--------------------|---------------------|
 | 1 | Búsqueda con parte del título en mayúsculas; luego búsqueda vacía y texto inexistente | Coincidencias sin distinguir mayúsculas; catálogo completo; mensaje sin resultados | _Pendiente de ejecución_ |
-| 2 | Alta de libro con ISBN existente y luego con ISBN nuevo | El duplicado se rechaza; el válido aparece en catálogo y selección de venta | _Pendiente de ejecución_ |
-| 3 | Alta de cliente con email inválido, email existente en mayúsculas y email nuevo | Se rechazan los dos primeros; el nuevo aparece en listado y selección | _Pendiente de ejecución_ |
-| 4 | Venta sin cliente, cantidad cero, negativa o decimal; libro repetido | No se confirma; el duplicado no crea otro renglón | _Pendiente de ejecución_ |
-| 5 | Venta válida: dos unidades a 1500 y una a 2000 | Subtotales 3000 y 2000; total 5000; detalle conservado en el historial | _Pendiente de ejecución_ |
-| 6 | Venta confirmada y cambio exclusivo del precio de catálogo guardado, en una copia de prueba | El historial conserva precio unitario, subtotales y total confirmados | _Pendiente de ejecución_ |
+| 2 | Alta de libro con ISBN existente y luego con ISBN nuevo | El duplicado se rechaza; el válido aparece en catálogo y selección de venta | Aprobado: ISBN `978 950 0001 1` rechazado con «Ya existe un libro con ese ISBN.»; con ISBN nuevo se guardó y apareció en catálogo y selector de venta |
+| 3 | Alta de cliente con email inválido, email existente en mayúsculas y email nuevo | Se rechazan los dos primeros; el nuevo aparece en listado y selección | Aprobado: `ana@` rechazado por formato y `MARIA.GOMEZ@EJEMPLO.COM` rechazado como existente; el email nuevo se guardó y apareció en listado y selector |
+| 4 | Venta sin cliente, cantidad cero, negativa o decimal; libro repetido | No se confirma; el duplicado no crea otro renglón | Aprobado: sin cliente y cantidades `0`, `-2` y `1.5` rechazadas; el libro repetido sumó la cantidad (2+3=5) sin crear otro renglón |
+| 5 | Venta válida: dos unidades a 1500 y una a 2000 | Subtotales 3000 y 2000; total 5000; detalle conservado en el historial | Aprobado: subtotales 3000 y 2000, total 5000; el detalle del historial muestra ambos renglones, fecha e identificador |
+| 6 | Venta confirmada y cambio exclusivo del precio de catálogo guardado, en una copia de prueba | El historial conserva precio unitario, subtotales y total confirmados | Aprobado: tras cambiar el precio en `libreria.libros` y recargar, el historial conservó 1500, 3000 y 5000 |
 | 7 | Recarga después de altas y venta | Se recuperan los datos sin duplicar ejemplos ni ventas | _Pendiente de ejecución_ |
 | 8 | Navegación por teclado y anchos de 320 px y 1280 px | Foco visible, controles utilizables y tabla con desplazamiento propio si lo necesita | _Pendiente de ejecución_ |
 
