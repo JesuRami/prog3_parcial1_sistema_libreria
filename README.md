@@ -109,7 +109,7 @@ Para inspeccionarlas: herramientas de desarrollo del navegador (F12) → **Appli
 - **Semilla idempotente:** si una clave no existe, se escribe el seed; si ya existe, se lee y
   no se reescribe. Por eso al recargar no se duplican los ejemplos.
 - **Escritura por colección:** cada alta o venta confirmada guarda la colección afectada.
-- **Corrupción:** si el contenido guardado no es un JSON válido o no tiene la forma esperada,
+- **Corrupción:** si el contenido guardado no es un JSON válido o no es una lista (array),
   esa colección se descarta y se vuelve a cargar el seed; la aplicación no se interrumpe.
 - **Si el navegador no permite escribir** (modo privado, cuota llena o almacenamiento
   bloqueado), la aplicación sigue funcionando en memoria y lo avisa en pantalla.
