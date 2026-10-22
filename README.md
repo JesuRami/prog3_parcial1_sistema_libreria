@@ -146,7 +146,7 @@ Resultado registrado según lo observado al ejecutar cada caso (los casos se cor
 | 5 | Venta válida: dos unidades a 1500 y una a 2000 | Subtotales 3000 y 2000; total 5000; detalle conservado en el historial | Aprobado: subtotales 3000 y 2000, total 5000; el detalle del historial muestra ambos renglones, fecha e identificador |
 | 6 | Venta confirmada y cambio exclusivo del precio de catálogo guardado, en una copia de prueba | El historial conserva precio unitario, subtotales y total confirmados | Aprobado: tras cambiar el precio en `libreria.libros` y recargar, el historial conservó 1500, 3000 y 5000 |
 | 7 | Recarga después de altas y venta | Se recuperan los datos sin duplicar ejemplos ni ventas | _Pendiente de ejecución_ |
-| 8 | Navegación por teclado y anchos de 320 px y 1280 px | Foco visible, controles utilizables y tabla con desplazamiento propio si lo necesita | _Pendiente de ejecución_ |
+| 8 | Navegación por teclado y anchos de 320 px y 1280 px | Foco visible, controles utilizables y tabla con desplazamiento propio si lo necesita | Aprobado: recorrido completo con Tab (incluido «Saltar al contenido») con foco visible en todos los controles; a 320 px y a 1280 px no hubo desplazamiento horizontal de página y las tablas se desplazaron dentro de su contenedor |
 
 > Si algún caso falla o queda pendiente, se reemplaza esta columna por el comportamiento real
 > observado, sin declararlo aprobado.
