@@ -7,7 +7,7 @@ sin librerías, frameworks, CDNs, compilación ni backend. Los datos viven en el
 Lautaro Fernández, .  
 Daniela Díaz, 53857.  
 Jesús Ramírez, 54010.  
-Danilo Serrano, .  
+Danilo Serrano, 53946.  
 
 **Docente:** Matías Torres.  
 
